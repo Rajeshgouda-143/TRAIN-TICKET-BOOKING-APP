@@ -1,176 +1,218 @@
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Bookings.css";
 
 function Bookings() {
-  const [bookings, setBookings] = useState([
-    {
-      id: "RG101",
-      trainName: "Chennai Express",
-      trainNumber: "12601",
-      source: "Chennai Central",
-      destination: "Bengaluru City",
-      date: "2026-11-05",
-      passenger: "Rajesh Gouda",
-      seat: "S2 - 24",
-      price: 450,
-      status: "Confirmed",
-    },
-    {
-      id: "RG102",
-      trainName: "Coastal Express",
-      trainNumber: "18046",
-      source: "Berhampur",
-      destination: "Bhubaneswar",
-      date: "2026-11-10",
-      passenger: "Rajesh Gouda",
-      seat: "S3 - 18",
-      price: 250,
-      status: "Confirmed",
-    },
-  ]);
+  const navigate = useNavigate();
+
+  const [bookings, setBookings] = useState(() => {
+    return JSON.parse(localStorage.getItem("railgoBookings") || "[]");
+  });
 
   const cancelBooking = (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to cancel this booking?"
+      "Are you sure you want to cancel this booking?",
     );
 
-    if (confirmed) {
-      setBookings((previousBookings) =>
-        previousBookings.map((booking) =>
-          booking.id === id
-            ? { ...booking, status: "Cancelled" }
-            : booking
-        )
+    if (!confirmed) return;
+
+    setBookings((previousBookings) => {
+      const updatedBookings = previousBookings.map((booking) =>
+        booking.id === id ? { ...booking, status: "Cancelled" } : booking,
       );
-    }
+
+      localStorage.setItem("railgoBookings", JSON.stringify(updatedBookings));
+
+      return updatedBookings;
+    });
   };
 
   const viewTicket = (booking) => {
-    alert(
-      `Booking ID: ${booking.id}\n` +
-      `Train: ${booking.trainName}\n` +
-      `From: ${booking.source}\n` +
-      `To: ${booking.destination}\n` +
-      `Travel Date: ${booking.date}\n` +
-      `Passenger: ${booking.passenger}\n` +
-      `Seat: ${booking.seat}\n` +
-      `Status: ${booking.status}`
-    );
+    navigate(`/ticket/${booking.id}`);
   };
+
+  const confirmedCount = bookings.filter(
+    (booking) => booking.status === "Confirmed",
+  ).length;
+
+  const cancelledCount = bookings.filter(
+    (booking) => booking.status === "Cancelled",
+  ).length;
 
   return (
     <div className="bookings-page">
       <div className="bookings-header">
+        <span className="booking-eyebrow">YOUR JOURNEYS</span>
         <h1>My Bookings</h1>
-        <p>Manage your train tickets in one place.</p>
+        <p>All your train journeys, together in one place.</p>
       </div>
 
       <div className="booking-summary">
         <div className="summary-card">
-          <h3>Total Bookings</h3>
-          <p>{bookings.length}</p>
+          <span className="summary-icon">🎫</span>
+          <div>
+            <p>Total Bookings</p>
+            <h2>{bookings.length}</h2>
+          </div>
         </div>
 
         <div className="summary-card">
-          <h3>Confirmed</h3>
-          <p>
-            {bookings.filter(
-              (booking) => booking.status === "Confirmed"
-            ).length}
-          </p>
+          <span className="summary-icon">✓</span>
+          <div>
+            <p>Confirmed</p>
+            <h2>{confirmedCount}</h2>
+          </div>
         </div>
 
         <div className="summary-card">
-          <h3>Cancelled</h3>
-          <p>
-            {bookings.filter(
-              (booking) => booking.status === "Cancelled"
-            ).length}
-          </p>
+          <span className="summary-icon">✕</span>
+          <div>
+            <p>Cancelled</p>
+            <h2>{cancelledCount}</h2>
+          </div>
         </div>
       </div>
 
       <div className="booking-list">
         {bookings.length > 0 ? (
           bookings.map((booking) => (
-            <div className="booking-card" key={booking.id}>
-              <div className="booking-card-header">
-                <div>
-                  <h2>{booking.trainName}</h2>
-                  <p>Train No: {booking.trainNumber}</p>
+            <article className="rail-ticket" key={booking.id}>
+              <div className="ticket-main">
+                <div className="ticket-top">
+                  <div className="ticket-brand">
+                    <span className="ticket-logo">R</span>
+                    <div>
+                      <h2>RailGo Lite</h2>
+                      <p>TRAIN E-TICKET</p>
+                    </div>
+                  </div>
+
+                  <span
+                    className={`booking-status ${
+                      booking.status === "Confirmed" ? "confirmed" : "cancelled"
+                    }`}
+                  >
+                    {booking.status}
+                  </span>
                 </div>
 
-                <span
-                  className={`booking-status ${
-                    booking.status === "Confirmed"
-                      ? "confirmed"
-                      : "cancelled"
-                  }`}
-                >
-                  {booking.status}
-                </span>
-              </div>
+                <div className="ticket-train-info">
+                  <div>
+                    <h3>{booking.trainName}</h3>
+                    <p>Train No. {booking.trainNumber}</p>
+                  </div>
 
-              <div className="booking-route">
-                <div>
-                  <h3>{booking.source}</h3>
-                  <p>From</p>
+                  <div className="ticket-booking-id">
+                    <span>BOOKING ID</span>
+                    <strong>{booking.id}</strong>
+                  </div>
                 </div>
 
-                <span className="route-arrow">→</span>
+                <div className="ticket-route">
+                  <div className="ticket-station">
+                    <span className="station-code">{booking.sourceCode}</span>
+                    <h3>{booking.departure}</h3>
+                    <p>{booking.source}</p>
+                    <small>Departure</small>
+                  </div>
 
-                <div>
-                  <h3>{booking.destination}</h3>
-                  <p>To</p>
+                  <div className="ticket-route-line">
+                    <span>🚆</span>
+                    <div></div>
+                    <small>Journey</small>
+                  </div>
+
+                  <div className="ticket-station destination">
+                    <span className="station-code">
+                      {booking.destinationCode}
+                    </span>
+                    <h3>{booking.arrival}</h3>
+                    <p>{booking.destination}</p>
+                    <small>Arrival</small>
+                  </div>
+                </div>
+
+                <div className="ticket-dashed-divider">
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div className="ticket-details">
+                  <div>
+                    <span>PASSENGER</span>
+                    <strong>{booking.passenger}</strong>
+                  </div>
+
+                  <div>
+                    <span>TRAVEL DATE</span>
+                    <strong>
+                      {new Date(`${booking.date}T12:00:00`).toLocaleDateString(
+                        "en-IN",
+                        {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        },
+                      )}
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span>COACH / SEAT</span>
+                    <strong>{booking.seat}</strong>
+                  </div>
+
+                  <div>
+                    <span>TICKET FARE</span>
+                    <strong className="ticket-price">₹{booking.price}</strong>
+                  </div>
                 </div>
               </div>
 
-              <div className="booking-details">
-                <p>
-                  <strong>Booking ID:</strong> {booking.id}
-                </p>
-                <p>
-                  <strong>Travel Date:</strong> {booking.date}
-                </p>
-                <p>
-                  <strong>Passenger:</strong> {booking.passenger}
-                </p>
-                <p>
-                  <strong>Seat:</strong> {booking.seat}
-                </p>
-                <p>
-                  <strong>Ticket Price:</strong> ₹{booking.price}
-                </p>
-              </div>
+              <div className="ticket-stub">
+                <div className="stub-circle stub-top"></div>
+                <div className="stub-circle stub-bottom"></div>
 
-              <div className="booking-actions">
-                <button
-                  className="view-ticket-btn"
-                  onClick={() => viewTicket(booking)}
-                >
-                  View Ticket
-                </button>
+                <span className="stub-label">YOUR TICKET</span>
+                <div className="stub-qr" aria-label="Decorative ticket pattern">
+                  <span>▦</span>
+                </div>
 
-                <button
-                  className="cancel-booking-btn"
-                  disabled={booking.status === "Cancelled"}
-                  onClick={() => cancelBooking(booking.id)}
-                >
-                  {booking.status === "Cancelled"
-                    ? "Cancelled"
-                    : "Cancel Booking"}
-                </button>
+                <strong>{booking.id}</strong>
+                <p>{booking.status}</p>
+
+                <div className="ticket-actions">
+                  <button
+                    className="view-ticket-btn"
+                    onClick={() => viewTicket(booking)}
+                  >
+                    View Ticket
+                  </button>
+
+                  <button
+                    className="cancel-booking-btn"
+                    disabled={booking.status === "Cancelled"}
+                    onClick={() => cancelBooking(booking.id)}
+                  >
+                    {booking.status === "Cancelled" ? "Cancelled" : "Cancel"}
+                  </button>
+                </div>
               </div>
-            </div>
+            </article>
           ))
         ) : (
           <div className="empty-bookings">
+            <span>🎫</span>
             <h2>No Bookings Yet</h2>
-            <p>Your train bookings will appear here.</p>
+            <p>Your train tickets will appear here when you book a journey.</p>
           </div>
         )}
       </div>
+
+      <p className="booking-note">
+        Demo tickets for your RailGo Lite project. These are not official
+        railway tickets.
+      </p>
     </div>
   );
 }
