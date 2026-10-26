@@ -1,0 +1,132 @@
+/* Header */
+.site-header {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Orange travel advisory strip */
+.travel-advisory {
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  background-color: #ff9d35;
+  color: #252525;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.advisory-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: #222222;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.travel-advisory p {
+  margin: 0;
+}
+
+/* Blue navigation bar */
+.navbar {
+  min-height: 92px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 32px;
+  background: linear-gradient(110deg, #0873b9, #07529a);
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  font-size: 36px;
+}
+
+.navbar-logo h2 {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.navbar-logo h2 span {
+  color: #ffb04a;
+}
+
+/* Navigation pill */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 40px;
+  background-color: rgba(0, 47, 104, 0.25);
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 25px;
+  background: transparent;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-button.active {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Responsive layout */
+@media (max-width: 760px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    padding: 20px 12px;
+  }
+
+  .navbar-links {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 18px;
+  }
+
+  .nav-button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .travel-advisory {
+    align-items: flex-start;
+    font-size: 11px;
+  }
+}

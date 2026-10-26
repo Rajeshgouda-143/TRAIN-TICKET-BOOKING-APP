@@ -1,0 +1,219 @@
+
+.trains-page {
+  width: min(1100px, 92%);
+  margin: 40px auto;
+  color: #1f2937;
+}
+
+/* Page heading */
+.trains-page h1 {
+  margin: 0 0 8px;
+  color: #21143a;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.trains-page > p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Search section */
+.train-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0 30px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #ece7f5;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(41, 20, 75, 0.05);
+}
+
+.train-filters input {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  color: #24143d;
+  background: #faf9fc;
+  border: 1px solid #ded8e9;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.train-filters input::placeholder {
+  color: #8b8499;
+}
+
+.train-filters input:focus {
+  background: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+/* Train results */
+.train-list {
+  display: grid;
+  gap: 18px;
+}
+
+.train-card {
+  position: relative;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e9e4f1;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(41, 20, 75, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.train-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(41, 20, 75, 0.09);
+}
+
+.train-card h2 {
+  margin: 0 0 7px;
+  color: #29164a;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.train-card > p:first-of-type {
+  margin: 0;
+  color: #8b8499;
+  font-size: 13px;
+}
+
+/* Route information */
+.train-route {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  margin: 22px 0;
+  padding: 20px;
+  background: #faf8ff;
+  border: 1px solid #f0eafd;
+  border-radius: 12px;
+}
+
+.train-route > div:last-child {
+  text-align: right;
+}
+
+.train-route strong {
+  color: #32165c;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.train-route p {
+  margin: 7px 0 0;
+  color: #6b6478;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.train-route > span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: #7c3aed;
+  background: #eee5ff;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+/* Fare */
+.train-card > p:last-of-type {
+  margin: 0 0 18px;
+  color: #5b5269;
+  font-size: 14px;
+}
+
+.train-card > p:last-of-type::first-letter {
+  color: #32165c;
+}
+
+/* Book button */
+.train-card button {
+  padding: 12px 20px;
+  color: #ffffff;
+  background: #6d28d9;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.train-card button:hover {
+  background: #5b21b6;
+}
+
+.train-card button:active {
+  transform: scale(0.98);
+}
+
+/* No results */
+.train-list > p {
+  padding: 28px 20px;
+  color: #6b6478;
+  background: #ffffff;
+  border: 1px dashed #d8cde8;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .trains-page {
+    margin: 26px auto;
+  }
+
+  .train-filters {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .train-card {
+    padding: 18px;
+  }
+
+  .train-card h2 {
+    font-size: 19px;
+  }
+
+  .train-route {
+    gap: 9px;
+    padding: 14px 10px;
+  }
+
+  .train-route strong {
+    font-size: 15px;
+  }
+
+  .train-route p {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .train-route > span {
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+
+  .train-card button {
+    width: 100%;
+  }
+}
