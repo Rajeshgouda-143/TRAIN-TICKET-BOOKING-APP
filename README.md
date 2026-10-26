@@ -1,16 +1,59 @@
-# React + Vite
+# 🚆 Train Ticket Booking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A train ticket booking web application built with React and Vite. The project aims to provide a simple and user-friendly interface for exploring trains, managing bookings, and ordering meals during a journey.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Home Page:** Introduction to the train booking application.
+- **Trains Page:** Browse available trains and search by source and destination.
+- **My Bookings:** View booking details, ticket prices, and booking status.
+- **Meals Page:** Browse food items, search menus, manage a cart, and place demo orders.
+- **Navigation:** Move between pages using React Router.
+- **Responsive Design:** Layout adapts to desktop and mobile screens.
 
-## React Compiler
+## 🛠️ Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- React Router DOM
 
-## Expanding the Oxlint configuration
+## ⚙️ Installation and Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Rajeshgouda-143/TRAIN-TICKET-BOOKING-APP.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd TRAIN-TICKET-BOOKING-APP
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL displayed in your terminal.
+
+## 📌 Project Status
+
+This is a learning project. Train and booking data are currently sample data, and booking cancellation and meal ordering are frontend demonstrations. Real railway booking, payment processing, and persistent data storage are not yet integrated.
+
+## 👨‍💻 Author
+
+**Rajesh Gouda**
+
+GitHub: [Rajeshgouda-143](https://github.com/Rajeshgouda-143)
