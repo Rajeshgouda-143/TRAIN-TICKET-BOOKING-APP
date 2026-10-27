@@ -1,0 +1,237 @@
+
+.pnr-page {
+  min-height: 80vh;
+  padding: 40px 20px 60px;
+  background: #f5f3ff;
+}
+
+.pnr-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pnr-eyebrow {
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.pnr-header h1 {
+  margin: 10px 0;
+  color: #4c1d95;
+  font-size: 36px;
+}
+
+.pnr-header p {
+  color: #6b7280;
+}
+
+.pnr-search-card,
+.pnr-result-card {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 28px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(45, 25, 90, 0.1);
+}
+
+.pnr-search-card {
+  max-width: 560px;
+}
+
+.pnr-icon {
+  font-size: 36px;
+  text-align: center;
+}
+
+.pnr-search-card h2 {
+  color: #4c1d95;
+  text-align: center;
+}
+
+.pnr-search-card > p {
+  color: #6b7280;
+  text-align: center;
+}
+
+.pnr-search-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.pnr-search-card label {
+  color: #374151;
+  font-weight: 600;
+}
+
+.pnr-search-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.pnr-search-card input:focus {
+  outline: 2px solid #a78bfa;
+  border-color: #7c3aed;
+}
+
+.pnr-search-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 9px;
+  background: #6d28d9;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pnr-search-card button:hover {
+  background: #5b21b6;
+}
+
+.pnr-error {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+.pnr-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pnr-result-header span:first-child,
+.pnr-route span,
+.pnr-details span,
+.pnr-demo-note {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.pnr-result-header h2 {
+  margin-bottom: 0;
+  color: #4c1d95;
+}
+
+.pnr-status-badge {
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pnr-confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pnr-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.pnr-train-info {
+  padding: 18px 0;
+}
+
+.pnr-train-info h3 {
+  margin-bottom: 5px;
+  color: #4c1d95;
+}
+
+.pnr-train-info p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.pnr-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px dashed #d1d5db;
+  border-bottom: 1px dashed #d1d5db;
+}
+
+.pnr-route h3 {
+  margin: 8px 0;
+  color: #1f2937;
+}
+
+.pnr-route p {
+  margin-bottom: 0;
+  color: #6b7280;
+}
+
+.pnr-route-arrow {
+  color: #7c3aed;
+  font-size: 28px;
+}
+
+.pnr-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 22px;
+}
+
+.pnr-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pnr-details strong {
+  color: #374151;
+  overflow-wrap: anywhere;
+}
+
+.pnr-demo-note {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  line-height: 1.5;
+}
+
+@media (max-width: 520px) {
+  .pnr-page {
+    padding: 28px 12px 40px;
+  }
+
+  .pnr-header h1 {
+    font-size: 28px;
+  }
+
+  .pnr-search-card,
+  .pnr-result-card {
+    padding: 20px;
+  }
+
+  .pnr-route {
+    gap: 8px;
+  }
+
+  .pnr-route h3 {
+    font-size: 15px;
+  }
+
+  .pnr-details {
+    grid-template-columns: 1fr;
+  }
+}

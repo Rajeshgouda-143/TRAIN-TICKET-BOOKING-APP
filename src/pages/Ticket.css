@@ -1,0 +1,282 @@
+
+.print-ticket-page {
+  min-height: 100vh;
+  padding: 35px 20px 60px;
+  background: #f5f5fb;
+  color: #29213f;
+}
+
+.print-ticket-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto 25px;
+}
+
+.print-ticket-actions button,
+.ticket-not-found button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #6d28d9;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.print-ticket-actions button:first-child {
+  background: white;
+  color: #5b21b6;
+  border: 1px solid #ddd3f5;
+}
+
+.official-ticket {
+  max-width: 800px;
+  margin: auto;
+  padding: 35px;
+  background: white;
+  border: 1px solid #e8e1f5;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(43, 26, 91, 0.08);
+}
+
+.official-ticket-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 25px;
+  border-bottom: 2px dashed #d9d1e9;
+}
+
+.official-ticket-logo {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 13px;
+  background: #6d28d9;
+  color: white;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.official-ticket-header h1 {
+  color: #35205f;
+  font-size: 24px;
+}
+
+.official-ticket-header p {
+  margin-top: 5px;
+  color: #888098;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.official-ticket-status {
+  margin-left: auto;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ticket-confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.ticket-cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.official-ticket-reference {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 0;
+}
+
+.official-ticket-reference div,
+.official-ticket-journey > div,
+.official-ticket-footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.official-ticket-reference span,
+.official-ticket-journey span,
+.official-ticket-train > span,
+.official-ticket-passenger div span,
+.official-ticket-footer span {
+  color: #888098;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.official-ticket-reference strong {
+  color: #6d28d9;
+}
+
+.official-ticket-journey {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 28px 22px;
+  border-radius: 12px;
+  background: #f8f6ff;
+}
+
+.official-ticket-journey h2 {
+  margin: 10px 0;
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.official-ticket-journey strong {
+  color: #6d28d9;
+}
+
+.official-ticket-journey p {
+  margin-top: 8px;
+  color: #5f5872;
+  font-size: 14px;
+}
+
+.official-ticket-arrow {
+  color: #7c3aed;
+  font-size: 28px;
+}
+
+.official-ticket-train {
+  padding: 25px 0;
+  border-bottom: 1px dashed #d9d1e9;
+}
+
+.official-ticket-train h3 {
+  margin: 10px 0 6px;
+  font-size: 19px;
+}
+
+.official-ticket-train p {
+  color: #77738a;
+  font-size: 14px;
+}
+
+.official-ticket-passenger {
+  padding: 25px 0;
+}
+
+.official-ticket-passenger h3 {
+  margin-bottom: 18px;
+  font-size: 17px;
+}
+
+.official-ticket-passenger div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0edf6;
+}
+
+.official-ticket-passenger div strong {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.official-ticket-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  padding-top: 22px;
+  border-top: 2px dashed #d9d1e9;
+}
+
+.official-ticket-footer > div strong {
+  color: #6d28d9;
+  font-size: 28px;
+}
+
+.official-ticket-footer > p {
+  max-width: 300px;
+  color: #888098;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.ticket-not-found {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.ticket-not-found p {
+  margin: 12px 0 20px;
+  color: #77738a;
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .print-ticket-page {
+    min-height: auto;
+    padding: 0;
+    background: white;
+  }
+
+  .print-ticket-actions {
+    display: none !important;
+  }
+
+  .official-ticket {
+    max-width: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
+
+@media (max-width: 550px) {
+  .print-ticket-page {
+    padding: 20px 12px;
+  }
+
+  .official-ticket {
+    padding: 20px 15px;
+  }
+
+  .official-ticket-header {
+    flex-wrap: wrap;
+  }
+
+  .official-ticket-header h1 {
+    font-size: 20px;
+  }
+
+  .official-ticket-status {
+    margin-left: 0;
+  }
+
+  .official-ticket-journey {
+    gap: 10px;
+    padding: 20px 12px;
+  }
+
+  .official-ticket-journey h2 {
+    font-size: 15px;
+  }
+
+  .official-ticket-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

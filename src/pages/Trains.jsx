@@ -1,10 +1,21 @@
-
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Trains.css";
 
 function Trains() {
-  const [source, setSource] = useState("");
-  const [destination, setDestination] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Receive search details from the Home Page
+  const searchData = location.state || {};
+
+  const [source, setSource] = useState(searchData.source || "");
+  const [destination, setDestination] = useState(
+    searchData.destination || ""
+  );
+  const [travelDate, setTravelDate] = useState(
+    searchData.travelDate || ""
+  );
 
   const trains = [
     {
@@ -39,19 +50,29 @@ function Trains() {
     },
   ];
 
+  // Filter trains by source and destination
   const filteredTrains = trains.filter((train) => {
     const matchesSource =
-      source === "" ||
-      train.source.toLowerCase().includes(source.toLowerCase());
+      source.trim() === "" ||
+      train.source.toLowerCase().includes(source.trim().toLowerCase());
 
     const matchesDestination =
-      destination === "" ||
+      destination.trim() === "" ||
       train.destination
         .toLowerCase()
-        .includes(destination.toLowerCase());
+        .includes(destination.trim().toLowerCase());
 
     return matchesSource && matchesDestination;
   });
+
+  const handleBookTicket = (train) => {
+    navigate("/book-ticket", {
+      state: {
+        train,
+        travelDate,
+      },
+    });
+  };
 
   return (
     <div className="trains-page">
@@ -71,6 +92,14 @@ function Trains() {
           placeholder="To station"
           value={destination}
           onChange={(event) => setDestination(event.target.value)}
+        />
+
+        <input
+          type="date"
+          value={travelDate}
+          min={new Date().toLocaleDateString("en-CA")}
+          onChange={(event) => setTravelDate(event.target.value)}
+          aria-label="Travel date"
         />
       </div>
 
@@ -97,11 +126,7 @@ function Trains() {
 
               <p>Starting price: ₹{train.price}</p>
 
-              <button
-                onClick={() =>
-                  alert("Booking functionality will be added next.")
-                }
-              >
+              <button onClick={() => handleBookTicket(train)}>
                 Book Ticket
               </button>
             </div>
