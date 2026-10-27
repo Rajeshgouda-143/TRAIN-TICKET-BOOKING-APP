@@ -514,3 +514,33 @@
     font-size: 12px;
   }
 }
+
+
+
+/* Cancelled booking history */
+.rail-ticket.ticket-cancelled {
+  opacity: 0.82;
+}
+
+.booking-status.cancelled {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+}
+
+.booking-status.pending {
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+
+.ticket-cancelled .ticket-stub > p {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.ticket-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+}
