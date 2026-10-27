@@ -7,8 +7,8 @@ function Navbar() {
       <div className="travel-advisory">
         <span className="advisory-icon">ℹ</span>
         <p>
-          Travel Advisory: Check train running status, platform information,
-          and coach position before your journey.
+          Travel Advisory: Check train running status, platform information, and
+          coach position before your journey.
         </p>
       </div>
 
@@ -41,9 +41,9 @@ function Navbar() {
             PNR STATUS
           </NavLink>
 
-          <button className="nav-button" type="button">
+          <NavLink to="/login" className="nav-button">
             LOGIN
-          </button>
+          </NavLink>
         </div>
       </nav>
     </header>
